@@ -64,7 +64,7 @@ public sealed class Booking : Entity
     DateTime utcNow,
     PricingService pricingService)
     {
-        var pricingDetails = pricingService.CalculatePrice(apartment, duration)
+        var pricingDetails = pricingService.CalculatePrice(apartment, duration);
 
         var booking = new Booking(
             Guid.NewGuid(),
@@ -89,7 +89,7 @@ public sealed class Booking : Entity
     {
         if (Status != BookingStatus.Reserved)
         {
-            return Result.Failure(BookingErrors.NotPending)
+            return Result.Failure(BookingErrors.NotFound);
         }
 
         Status = BookingStatus.Confirmed;

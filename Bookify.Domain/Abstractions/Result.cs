@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Bookify.Domain.Abstractions;
 
@@ -52,7 +51,7 @@ public class Result<TValue> : Result
     [NotNull]
     public TValue Value => IsSuccess
         ? _value!
-        : throw new InvalidOperationException("The value of a failure result can not be accessed.");
+        : throw new InvalidOperationException("O valor de um resultado de falha não pode ser acessado.");
 
     public static implicit operator Result<TValue>(TValue? value) => Create(value);
 }
